@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -61,14 +60,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body>
-        <Script
-          id="google-adsense"
+      <head>
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650234436308071"
           crossOrigin="anonymous"
-          strategy="beforeInteractive"
         />
+      </head>
+      <body>
         <LanguageProvider>
           <LanguageSwitcher />
           <main className="mx-auto min-h-screen w-full max-w-[430px] px-4 pb-6">
