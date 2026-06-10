@@ -25,16 +25,16 @@ export function ShareButtons({ type }: ShareButtonsProps) {
   }, []);
 
   async function shareResult() {
-    if (canNativeShare) {
-      await navigator.share({
-        title: "ラブクエスト診断",
-        text,
-        url,
-      });
+    if (!canNativeShare) {
+      window.open(urls.x, "_blank", "noopener,noreferrer");
       return;
     }
 
-    window.open(urls.x, "_blank", "noopener,noreferrer");
+    await navigator.share({
+      title: "ラブクエスト診断",
+      text,
+      url,
+    });
   }
 
   async function copyText() {
@@ -49,23 +49,16 @@ export function ShareButtons({ type }: ShareButtonsProps) {
 
   return (
     <div className="mx-auto grid max-w-[390px] gap-2">
-      <button
-        type="button"
-        className="pixel-corners min-h-12 border-2 border-[#ffd36b] bg-[#ff4f91] px-4 py-3 text-sm font-black text-white shadow-[0_5px_0_#6f173f] active:translate-y-1 active:shadow-none"
-        onClick={shareResult}
+      <a
+        className="pixel-corners inline-flex min-h-12 items-center justify-center border-2 border-[#ffd36b] bg-[#ff4f91] px-4 py-3 text-center text-sm font-black text-white shadow-[0_5px_0_#6f173f] active:translate-y-1 active:shadow-none"
+        href={urls.x}
+        target="_blank"
+        rel="noreferrer"
       >
-        {canNativeShare ? ui.shareNative : ui.shareResult}
-      </button>
+        {ui.shareX}
+      </a>
 
-      <div className="grid grid-cols-3 gap-2">
-        <a
-          className="pixel-corners inline-flex min-h-12 items-center justify-center border-2 border-[#ffd36b] bg-[#09061f] px-3 py-2 text-xs font-black text-white shadow-[0_4px_0_#050318] active:translate-y-1 active:shadow-none"
-          href={urls.x}
-          target="_blank"
-          rel="noreferrer"
-        >
-          {ui.shareX}
-        </a>
+      <div className={`grid gap-2 ${canNativeShare ? "grid-cols-3" : "grid-cols-2"}`}>
         <a
           className="pixel-corners inline-flex min-h-12 items-center justify-center border-2 border-[#ffd36b] bg-[#2a174f] px-3 py-2 text-xs font-black text-white shadow-[0_4px_0_#050318] active:translate-y-1 active:shadow-none"
           href={urls.threads}
@@ -74,6 +67,15 @@ export function ShareButtons({ type }: ShareButtonsProps) {
         >
           {ui.shareThreads}
         </a>
+        {canNativeShare ? (
+          <button
+            type="button"
+            className="pixel-corners inline-flex min-h-12 items-center justify-center border-2 border-[#ffd36b] bg-[#09061f] px-3 py-2 text-xs font-black text-white shadow-[0_4px_0_#050318] active:translate-y-1 active:shadow-none"
+            onClick={shareResult}
+          >
+            {ui.shareNative}
+          </button>
+        ) : null}
         <PixelButton type="button" variant="ghost" className="min-h-12 px-3 py-2 text-xs" onClick={copyText}>
           {ui.copy}
         </PixelButton>

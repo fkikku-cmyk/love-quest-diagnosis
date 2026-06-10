@@ -5,6 +5,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { useLanguage } from "@/components/LanguageProvider";
 import { PixelButton } from "@/components/PixelButton";
 import { RpgFrame } from "@/components/RpgFrame";
+import { StartQuestButton } from "@/components/StartQuestButton";
 import { uiText } from "@/lib/uiText";
 
 export function HomeContent() {
@@ -52,7 +53,7 @@ export function HomeContent() {
       </div>
 
       <div className="grid gap-3">
-        <PixelButton href="/quiz" className="w-full text-base">{ui.start}</PixelButton>
+        <StartQuestButton className="w-full text-base">{ui.start}</StartQuestButton>
         <PixelButton href="/types" variant="ghost" className="w-full">{ui.library}</PixelButton>
         <AdSlot placement="home-bottom" />
       </div>

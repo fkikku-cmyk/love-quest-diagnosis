@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 import { AxisMeter } from "@/components/AxisMeter";
 import { AdSlot } from "@/components/AdSlot";
 import { useLanguage } from "@/components/LanguageProvider";
@@ -9,6 +10,7 @@ import { PixelButton } from "@/components/PixelButton";
 import { ResultStatusCard } from "@/components/ResultStatusCard";
 import { RpgFrame } from "@/components/RpgFrame";
 import { ShareButtons } from "@/components/ShareButtons";
+import { clearAnswers } from "@/lib/storage";
 import { uiText } from "@/lib/uiText";
 import type { DiagnosisResult, LoveType } from "@/types/diagnosis";
 
@@ -19,8 +21,14 @@ type ResultCardProps = {
 
 export function ResultCard({ result, type }: ResultCardProps) {
   const statusCardRef = useRef<HTMLElement>(null);
+  const router = useRouter();
   const { language } = useLanguage();
   const ui = uiText[language];
+
+  function restartQuest() {
+    clearAnswers();
+    router.push("/quiz");
+  }
 
   return (
     <div className="space-y-5">
@@ -42,8 +50,7 @@ export function ResultCard({ result, type }: ResultCardProps) {
       <MonetizationCTA variant="result" />
 
       <div className="grid gap-3">
-        <PixelButton href="/quiz" variant="primary">{ui.retry}</PixelButton>
-        <PixelButton href="/quiz" variant="secondary">別の回答で試す</PixelButton>
+        <PixelButton type="button" variant="primary" onClick={restartQuest}>{ui.retry}</PixelButton>
         <PixelButton href="/types" variant="ghost">{ui.library}</PixelButton>
         <PixelButton href="/" variant="ghost">{ui.backToTitle}</PixelButton>
       </div>

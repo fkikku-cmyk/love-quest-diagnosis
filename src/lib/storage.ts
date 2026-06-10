@@ -22,6 +22,7 @@ export function loadAnswers(): AnswerMap {
 
 export function saveAnswers(answers: AnswerMap) {
   window.localStorage.setItem(ANSWERS_STORAGE_KEY, JSON.stringify(answers));
+  window.localStorage.removeItem(RESULT_STORAGE_KEY);
 }
 
 export function clearAnswers() {

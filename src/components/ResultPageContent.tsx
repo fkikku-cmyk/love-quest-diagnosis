@@ -1,11 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PixelButton } from "@/components/PixelButton";
 import { ResultCard } from "@/components/ResultCard";
+import { StartQuestButton } from "@/components/StartQuestButton";
 import { loveTypeMap } from "@/data/types";
-import { loadAnswers, loadResult, saveResult } from "@/lib/storage";
-import { calculateResult, isQuizComplete } from "@/lib/calculateResult";
+import { loadResult } from "@/lib/storage";
 import type { DiagnosisResult } from "@/types/diagnosis";
 
 export function ResultPageContent() {
@@ -17,19 +16,12 @@ export function ResultPageContent() {
       setResult(savedResult);
       return;
     }
-
-    const answers = loadAnswers();
-    if (isQuizComplete(answers)) {
-      const calculated = calculateResult(answers);
-      saveResult(calculated);
-      setResult(calculated);
-    }
   }, []);
 
   if (!result) {
     return (
       <div className="flex min-h-[calc(100vh-48px)] flex-col justify-center gap-6">
-        <PixelButton href="/quiz" className="w-full">冒険へ進む</PixelButton>
+        <StartQuestButton className="w-full">冒険へ進む</StartQuestButton>
       </div>
     );
   }
