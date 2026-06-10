@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/LegalPage";
-import { getAbsoluteUrl, seoKeywords } from "@/lib/site";
+import { getAbsoluteUrl, seoKeywords, siteName } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "利用規約",
@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   keywords: [...seoKeywords, "利用規約"],
   alternates: {
     canonical: getAbsoluteUrl("/terms"),
+  },
+  openGraph: {
+    title: `利用規約 | ${siteName}`,
+    description: "ラブクエスト診断の利用条件、禁止事項、免責事項、著作権、外部リンクについて記載しています。",
+    url: getAbsoluteUrl("/terms"),
+    images: ["/love-quest-title.jpg"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `利用規約 | ${siteName}`,
+    description: "ラブクエスト診断の利用規約です。",
+    images: ["/love-quest-title.jpg"],
   },
 };
 
@@ -20,7 +32,10 @@ export default function TermsPage() {
         {
           title: "サービス内容",
           body: (
-            <p>当サイトは、24問の回答から恋愛傾向を16タイプに分類する娯楽目的の診断コンテンツです。</p>
+            <>
+              <p>当サイトは、24問の回答から恋愛傾向を16タイプに分類する娯楽目的の診断コンテンツです。</p>
+              <p>診断結果は、恋愛、心理、医療、法律、人生設計などに関する専門的助言ではありません。</p>
+            </>
           ),
         },
         {
@@ -29,7 +44,14 @@ export default function TermsPage() {
             <>
               <p>当サイトのコンテンツ、画像、文章、デザインを無断で転載・複製・再配布することを禁止します。</p>
               <p>サイト運営を妨げる行為、不正アクセス、過度な負荷を与える行為も禁止します。</p>
+              <p>第三者を誹謗中傷する目的、個人情報を公開する目的、他者を決めつける目的で診断結果を使用することはお控えください。</p>
             </>
+          ),
+        },
+        {
+          title: "著作権",
+          body: (
+            <p>当サイトに掲載している文章、診断ロジック、デザイン、画像、キャラクター表示などの権利は、当サイトまたは正当な権利者に帰属します。</p>
           ),
         },
         {
@@ -44,7 +66,10 @@ export default function TermsPage() {
         {
           title: "免責事項",
           body: (
-            <p>診断結果は参考情報です。恋愛、人間関係、生活上の判断はご自身の責任で行ってください。</p>
+            <>
+              <p>診断結果は参考情報です。恋愛、人間関係、生活上の判断はご自身の責任で行ってください。</p>
+              <p>当サイトの利用により生じたトラブル、損害、外部サイトでの契約や購入について、当サイトは責任を負いません。</p>
+            </>
           ),
         },
       ]}

@@ -1,7 +1,10 @@
 import Link from "next/link";
 
 const footerLinks = [
-  { href: "/privacy", label: "プライバシー" },
+  { href: "/about", label: "ラブクエスト診断について" },
+  { href: "/types", label: "恋愛ジョブ図鑑" },
+  { href: "/articles", label: "恋愛診断コラム" },
+  { href: "/privacy", label: "プライバシーポリシー" },
   { href: "/terms", label: "利用規約" },
   { href: "/contact", label: "お問い合わせ" },
 ];

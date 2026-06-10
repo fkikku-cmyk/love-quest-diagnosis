@@ -1,5 +1,5 @@
 type AdSlotProps = {
-  placement: "home-bottom" | "result-bottom" | "types-bottom" | "type-detail-bottom";
+  placement: "home-bottom" | "result-bottom" | "types-bottom" | "type-detail-bottom" | "article-bottom";
 };
 
 const labels: Record<AdSlotProps["placement"], string> = {
@@ -7,6 +7,7 @@ const labels: Record<AdSlotProps["placement"], string> = {
   "result-bottom": "RESULT AD SLOT",
   "types-bottom": "LIBRARY AD SLOT",
   "type-detail-bottom": "TYPE DETAIL AD SLOT",
+  "article-bottom": "ARTICLE AD SLOT",
 };
 
 export function AdSlot({ placement }: AdSlotProps) {

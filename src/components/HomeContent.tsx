@@ -55,6 +55,14 @@ export function HomeContent() {
       <div className="grid gap-3">
         <StartQuestButton className="w-full text-base">{ui.start}</StartQuestButton>
         <PixelButton href="/types" variant="ghost" className="w-full">{ui.library}</PixelButton>
+        <div className="grid grid-cols-2 gap-2">
+          <PixelButton href="/about" variant="secondary" className="w-full px-2 text-xs">
+            診断について
+          </PixelButton>
+          <PixelButton href="/articles" variant="secondary" className="w-full px-2 text-xs">
+            恋愛コラム
+          </PixelButton>
+        </div>
         <AdSlot placement="home-bottom" />
       </div>
     </div>
