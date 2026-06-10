@@ -18,6 +18,9 @@ export const metadata: Metadata = {
   verification: {
     google: "QeqUGUsDLKwIfSIaHDUB80eIPQpQwKCakMMg056Yhjw",
   },
+  other: {
+    "google-adsense-account": "ca-pub-3650234436308071",
+  },
   alternates: {
     canonical: getAbsoluteUrl("/"),
   },
@@ -64,7 +67,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3650234436308071"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
         <LanguageProvider>
           <LanguageSwitcher />
