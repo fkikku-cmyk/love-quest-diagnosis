@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Trebuchet MS", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #09061f;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 78, 151, 0.24), transparent 34rem),
+    radial-gradient(circle at 78% 18%, rgba(255, 211, 107, 0.2), transparent 14rem),
+    radial-gradient(circle at 18% 72%, rgba(255, 155, 193, 0.18), transparent 15rem),
+    radial-gradient(circle at 12% 22%, rgba(247, 184, 61, 0.18), transparent 16rem),
+    linear-gradient(90deg, rgba(255, 229, 167, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(255, 229, 167, 0.06) 1px, transparent 1px),
+    linear-gradient(180deg, #0b102f 0%, #241044 54%, #4a174f 100%);
+  background-size: 100% 100%, 100% 100%, 18px 18px, 18px 18px, 100% 100%;
+  color: #fff6d5;
+  font-family: var(--font-display);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+::selection {
+  background: #ff4f81;
+  color: white;
+}
+
+.pixel-corners {
+  clip-path: polygon(
+    0 8px,
+    8px 8px,
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    8px calc(100% - 8px),
+    0 calc(100% - 8px)
+  );
+}
