@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   },
   description: "24問で恋愛傾向と相性がわかる、スマホ向け16タイプ恋愛ジョブ診断。",
   keywords: [...seoKeywords, "RPG診断", "恋愛傾向"],
+  verification: {
+    google: "QeqUGUsDLKwIfSIaHDUB80eIPQpQwKCakMMg056Yhjw",
+  },
   alternates: {
     canonical: getAbsoluteUrl("/"),
   },
